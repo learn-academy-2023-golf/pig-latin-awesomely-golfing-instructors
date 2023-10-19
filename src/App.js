@@ -33,6 +33,22 @@ const App = () => {
 
       // ACTION ITEM: your Pig Latin logic goes here!
 
+      // I want to check if the word begins with a vowel
+      if(eachWord[0] === vowelsArray[0]) {
+        return eachWord + "way"
+        // maybe we can use substring to get a portion of the word for the qu-functionality
+      } else if(eachWord.includes('qu') && eachWord.indexOf("qu") < eachWord.indexOf(vowelsArray[0])) {
+        let index = eachWord.indexOf("qu")
+        return eachWord.substring(index + 2) + eachWord.substring(0, index + 2 ) + "ay"
+      } else if(eachWord.includes("y") && vowelsArray.length !== -1) {
+        let yindex = eachWord.indexOf("y")
+        return eachWord.slice(yindex) + eachWord.slice(0, yindex) + "ay"
+      } else if(eachWord.indexOf(vowelsArray[0]) > 0) {
+        let vowel = eachWord.indexOf(vowelsArray[0])
+        let consonants = eachWord.slice(0, vowel)
+        return eachWord.slice(vowel) + consonants + "ay"
+      } 
+      
       // ACTION ITEM: this return will be the output of your Pig Latin'd code
       return eachWord
     })
